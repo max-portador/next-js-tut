@@ -18,8 +18,8 @@ export default async function Page({ searchParams }: PageProps) {
   const query = searchParams?.query || '';
   const currentPage = searchParams?.page || 1;
 
-  const totalPages = await fetchInvoicesPages(query)
-  
+  const totalPages = await fetchInvoicesPages(query);
+
   return (
     <div className="w-full">
       <div className="flex w-full items-center justify-between">
