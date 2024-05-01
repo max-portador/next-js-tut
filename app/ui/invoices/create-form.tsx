@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
 import {
   CheckIcon,
   ClockIcon,
   CurrencyDollarIcon,
   UserCircleIcon,
-} from '@heroicons/react/24/outline';
+} from "@heroicons/react/24/outline";
+import { type State, createInvoice } from "@/app/lib/actions";
 
-import { Button } from '@/app/ui/button';
-import { CustomerField } from '@/app/lib/definitions';
-import { ErrorView } from './errorView';
-import Link from 'next/link';
-import { createInvoice } from '@/app/lib/actions';
-import { useFormState } from 'react-dom';
+import { Button } from "@/app/ui/button";
+import { CustomerField } from "@/app/lib/definitions";
+import { ErrorView } from "./errorView";
+import Link from "next/link";
+import { useFormState } from "react-dom";
 
-const initialState = { message: null, errors: {} };
+const initialState: State = { message: null, errors: {} };
 
 export default function Form({ customers }: { customers: CustomerField[] }) {
   const [state, dispatch] = useFormState(createInvoice, initialState);
@@ -50,7 +50,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
           <ErrorView
             errors={state.errors}
             id="customer-error"
-            name={'customerId'}
+            name={"customerId"}
           />
         </div>
 
@@ -73,7 +73,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
               />
               <CurrencyDollarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
-            <ErrorView errors={state.errors} name={'amount'} />
+            <ErrorView errors={state.errors} name={"amount"} />
           </div>
         </div>
 
@@ -120,7 +120,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
             </div>
           </div>
         </fieldset>
-        <ErrorView errors={state.errors} name={'status'} />
+        <ErrorView errors={state.errors} name={"status"} />
       </div>
       {state.message && (
         <p className="mt-2 text-sm text-red-500">{state.message}</p>
